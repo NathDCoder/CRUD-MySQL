@@ -28,12 +28,16 @@ app.get("/books", (req, res) => {
     })
 })
 
-
+app.use(express.json())
 
 
 app.post("/books", (req, res) =>{
     const q = "INSERT INTO books (`title`, `desc`, `cover`) VALUES (?)"
-    const values = ["title from backend", "desc from backend", "cover pic from backend"]
+    const values = [
+    req.body.title,
+    req.body.desc,
+    req.body.ccver,
+];
 
     db.query(q, [values], (err, data) => {
         if(err) return res.json(err)
