@@ -1,5 +1,7 @@
 import express from "express";
 import mysql from "mysql";
+import cors from "cors";
+
 
 const app = express()
 
@@ -14,6 +16,8 @@ const db = mysql.createConnection({
 //If there is an Auth error
 //ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Root123';
 
+app.use(express.json())
+app.use(cors())
 
 app.get("/", (req, res) => {
     res.json("You Made it Traveller to the BE")
@@ -28,7 +32,7 @@ app.get("/books", (req, res) => {
     })
 })
 
-app.use(express.json())
+
 
 
 app.post("/books", (req, res) =>{
@@ -36,7 +40,7 @@ app.post("/books", (req, res) =>{
     const values = [
     req.body.title,
     req.body.desc,
-    req.body.ccver,
+    req.body.cover,
 ];
 
     db.query(q, [values], (err, data) => {
