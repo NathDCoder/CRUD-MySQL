@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 const style = {
     bg:`h-screen w-screen p-4 bg-gradient-to-r from-[#808080] to-[#F5FFFA]`,
     h1:`text-3xl text-center m-2`,
-    books:`bg-stone-500 max-w-[500px] p-4 text-lg rounded-md shadow-xl m-6`,
-    button:`bg-stone-500 max-w-[100px] p-2 rounded-md shadow-xl`
+    container:`grid grid-cols-4 m-8`,
+    books:`bg-stone-500 max-w-[500px] max-h-[500px] p-2 text-lg rounded-md shadow-xl m-6`,
+    button:`bg-stone-500 max-w-[100px] p-2 rounded-md shadow`,
+    img:`box border h-32 w-32 p-4` 
 }
 
 
@@ -33,10 +35,10 @@ const Books = () => {
       <div className={style.container}>
         {library.map(book => (
           <div className={style.books} key={book.id}>
-            {book.cover && <img src={book.cover} alt='' />}
-            <h2>{book.title}</h2>
-            <p>{book.desc}</p>
-            <span>{book.price}</span>
+            {book.cover && <img className={style.img} src={book.cover} alt='' />}
+            <h2>Title: {book.title}</h2>
+            <p>Description: {book.desc}</p>
+            <span>${book.price}</span>
           </div>
           ))}
       </div>
