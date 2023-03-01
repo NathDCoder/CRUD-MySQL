@@ -1,14 +1,13 @@
 
-import './App.css';
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
 
-import Books from './pages/Books';
-import Add from './pages/Add.jsx';
-import Update from './pages/Update.jsx';
+import Books from './pages/Books.js';
+import Add from './pages/Add.js';
+import Update from './pages/Update.js';
 
 
 function App() {

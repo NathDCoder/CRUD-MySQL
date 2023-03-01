@@ -1,5 +1,6 @@
-import e from 'cors'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Add = () => {
 
@@ -10,6 +11,8 @@ const Add = () => {
     cover:""
   })
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setBook((prev) => ({...prev, [e.target.name]: e.target.value }))
   }
@@ -19,8 +22,9 @@ const Add = () => {
     e.preventDefault()
     try{
       await axios.post("http://localhost:8800/books", book)
+      navigate("/")
     }catch(err){
-      
+      console.log(err)
     }
   }
 

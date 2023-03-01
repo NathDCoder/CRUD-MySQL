@@ -2,6 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
+const style = {
+    bg:`h-screen w-screen p-4 bg-gradient-to-r from-[#808080] to-[#F5FFFA]`,
+    h1:`text-3xl text-center m-2`,
+    books:`bg-stone-500 max-w-[500px] p-4 text-lg rounded-md shadow-xl m-6`,
+    button:`bg-stone-500 max-w-[100px] p-2 rounded-md shadow-xl`
+}
+
+
+
 const Books = () => {
   const [library, setLibrary] = useState([])
 
@@ -18,11 +28,11 @@ const Books = () => {
   }, [])
 
   return (
-  <div>
-    <h1> World Book Library </h1>
-      <div className='books'>
+  <div className={style.bg}>
+    <h1 className={style.h1}> World Library Compass</h1>
+      <div className={style.container}>
         {library.map(book => (
-          <div className='book' key={book.id}>
+          <div className={style.books} key={book.id}>
             {book.cover && <img src={book.cover} alt='' />}
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
@@ -30,7 +40,7 @@ const Books = () => {
           </div>
           ))}
       </div>
-      <button><Link to="/add">Add a Book</Link></button>
+      <button className={style.button}><Link to="/add">Add a Book</Link></button>
   </div>
   )
 }
